@@ -1,4 +1,4 @@
-package com.company;
+﻿package com.company;
 
 import java.util.Scanner;
 import java.lang.Math;
@@ -136,12 +136,12 @@ public class Main {
     public static void main(String[] args) {
 
         Customer[] customers = {new Customer(1, "andrey", "scherbin", "vasechkin", "yl.Puwkina", 1111, 777),
-                new Customer(1, "petya", "orlov", "petichkin", "yl.Puwkina", 2222, 888),
-                new Customer(1, "vasya", "molotov", "vasechkin", "yl.Petrova", 3333, 999),
-                new Customer(1, "kolya", "lybimov", "krytov", "yl.Genadeva", 4444, 444),
-                new Customer(1, "nikolay", "solniwkin", "hohlov", "yl.Pobedi", 5555, 333)};
+                new Customer(2, "petya", "orlov", "petichkin", "yl.Puwkina", 2222, 888),
+                new Customer(3, "vasya", "molotov", "vasechkin", "yl.Petrova", 3333, 999),
+                new Customer(4, "kolya", "lybimov", "krytov", "yl.Genadeva", 4444, 444),
+                new Customer(5, "nikolay", "solniwkin", "hohlov", "yl.Pobedi", 5555, 333)};
         Shop shop = new Shop(customers);
-        //shop.printCustomersListInAlphabetOrder();
+        shop.printCustomersListInAlphabetOrder();
         shop.printCustomersListInCreditCardNumberRange(1000, 3000);
     }
 }
