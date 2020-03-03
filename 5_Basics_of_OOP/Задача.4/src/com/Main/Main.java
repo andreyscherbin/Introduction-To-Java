@@ -68,14 +68,20 @@ public class Main {
                 case 1:
                     dragon.viewTreasures();
                     break;
+
                 case 2:
                     dragon.searchmMostValuableTreasure();
                     break;
+
                 case 3:
                     int cost = 0;
                     System.out.println("Введите сумму набора сокровищ");
                     cost = scan.nextInt();
                     dragon.treasureSelection(cost);
+
+                default:
+                    System.out.prinltn("Повторите ввод");
+                    break;
             }
         }
         System.out.println("До свидания!");
