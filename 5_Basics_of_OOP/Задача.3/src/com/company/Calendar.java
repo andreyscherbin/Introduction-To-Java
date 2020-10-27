@@ -1,8 +1,11 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Calendar {
+public class Calendar implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int year;
     private Day[] days;
@@ -98,7 +101,9 @@ public class Calendar {
         }
     }
 
-    private class Day {
+    private class Day implements Serializable {
+
+        private static final long serialVersionUID = 2L;
 
         private int day;
         private int month;
@@ -106,10 +111,7 @@ public class Calendar {
         private String type;
 
         public Day() {
-            day = 0;
-            month = 0;
-            dayWeek = "";
-            type = "";
+
         }
 
         public Day(int day, int month, String dayWeek, String type) {
@@ -118,11 +120,41 @@ public class Calendar {
             this.dayWeek = dayWeek;
             this.type = type;
         }
+
+        @Override
+        public boolean equals(Object o) {
+
+            if (o == this) return true;
+            if (!(o instanceof Day)) {
+                return false;
+            }
+
+            Day day_object = (Day) o;
+
+            return day_object.day == day &&
+                    day_object.month == month &&
+                    day_object.dayWeek.equals(dayWeek) &&
+                    day_object.type.equals(type);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 31 * result + day;
+            result = 31 * result + month;
+            result = 31 * result + dayWeek.hashCode();
+            result = 31 * result + type.hashCode();
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "День: " + day + " Месяц: " + month + " День недели: " + dayWeek + " Тип дня: " + type;
+        }
     }
 
     public Calendar() {
-        this.year = 0;
-        this.days = null;
+
     }
 
     public Calendar(int year) {
@@ -153,19 +185,41 @@ public class Calendar {
         }
     }
 
-    public void printCalendar() {
-
-        System.out.println("Календарь года: " + year);
-        for (Day day : days) {
-            System.out.println("day: " + day.day + " month: " + day.month + " dayOfWeek: " + day.dayWeek + " type: " + day.type);
-        }
-    }
-
-    public void makeHolidayDay(int day, int month) {
+    public boolean makeHolidayDay(int day, int month) {
         for (Day d : days) {
             if (d.day == day && d.month == month) {
                 d.type = "Праздничный день";
+                return true;
             }
         }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        for (Day day : days) {
+            System.out.println(day);
+        }
+        return "Календарь года: " + year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof Calendar)) {
+            return false;
+        }
+
+        Calendar calendar = (Calendar) o;
+        return calendar.year == year;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + year;
+        return result;
     }
 }

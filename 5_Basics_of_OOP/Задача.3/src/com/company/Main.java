@@ -10,10 +10,10 @@ public class Main {
     public static void main(String[] args) {
 
         Calendar calendar = new Calendar(2019);
-        calendar.printCalendar();
+        System.out.println(calendar);
         calendar.makeHolidayDay(1, 1);
         calendar.makeHolidayDay(28, 3);
-        calendar.printCalendar();
+        System.out.println(calendar);
     }
 }
 
