@@ -8,12 +8,12 @@ public class Client {
     private AbstractFactory abstractFactory;
     private AbstractProduct abstractProduct;
 
-    public AbstractProduct getGift(int cost){
+    public AbstractProduct getGift(int cost) {
         abstractProduct = abstractFactory.createProduct(cost);
         return abstractProduct;
     }
 
-    public void setAbstractFactory(AbstractFactory factory){
+    public void setAbstractFactory(AbstractFactory factory) {
         abstractFactory = factory;
     }
 }

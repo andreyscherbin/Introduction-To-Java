@@ -2,5 +2,5 @@ package com.AbstractProduct;
 
 public interface AbstractProduct {
 
-    void info();
+    String info();
 }

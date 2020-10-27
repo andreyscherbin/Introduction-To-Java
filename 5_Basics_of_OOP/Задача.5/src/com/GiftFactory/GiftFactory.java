@@ -18,7 +18,7 @@ public class GiftFactory implements AbstractFactory {
         AbstractProduct gift = null;
 
         for (int price : priceList) {
-            if (cost >= price) {
+            if (cost >= price && cost == price) {
                 gift = new Gift(price);
                 break;
             }

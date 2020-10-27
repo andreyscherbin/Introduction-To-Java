@@ -52,7 +52,33 @@ public class Gift implements AbstractProduct {
     }
 
     @Override
-    public void info() {
-        System.out.println("Этот продукт называется подарком");
+    public String info() {
+        return "Этот продукт называется подарком";
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof Wrapper)) {
+            return false;
+        }
+
+        Gift gift = (Gift) o;
+
+        return gift.cost == cost &&
+                gift.wrapper.equals(wrapper);
+
+
+    }
+
+    //Idea from effective Java : Item 9
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + cost;
+        result = 31 * result + wrapper.hashCode();
+        return result;
     }
 }
