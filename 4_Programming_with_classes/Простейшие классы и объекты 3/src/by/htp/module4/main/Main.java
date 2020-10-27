@@ -1,4 +1,4 @@
-package by.htp.module4_1.main;
+package by.htp.module4.main;
 
 import by.htp.module4_1.entity.Group;
 import by.htp.module4_1.entity.Student;

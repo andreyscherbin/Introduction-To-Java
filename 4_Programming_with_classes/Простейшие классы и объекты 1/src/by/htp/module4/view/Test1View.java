@@ -1,4 +1,4 @@
-package by.htp.module4_1.view;
+package by.htp.module4.view;
 
 import by.htp.module4_1.entity.Test1;
 

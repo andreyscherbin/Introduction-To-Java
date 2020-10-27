@@ -1,4 +1,4 @@
-package by.htp.module4_1.logic;
+package by.htp.module4.logic;
 
 import by.htp.module4_1.entity.Test1;
 

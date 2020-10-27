@@ -1,4 +1,4 @@
-package by.htp.module4_1.entity;
+package by.htp.module4.entity;
 
 import java.io.Serializable;
 
