@@ -1,6 +1,8 @@
 package by.htp.module5;
 
-public class TextFile extends File {
+public class TextFile extends File implements Serializable {
+	
+	private static final long serialVersionUID = 3L;
 	
 	private String text;
 	

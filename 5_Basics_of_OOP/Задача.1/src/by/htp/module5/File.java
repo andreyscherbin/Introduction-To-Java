@@ -1,7 +1,9 @@
 package by.htp.module5;
 
-public class File {
+public class File implements Serializable  {
 
+        private static final long serialVersionUID = 2L;
+        
 	private String title;
 	
 	public File() {

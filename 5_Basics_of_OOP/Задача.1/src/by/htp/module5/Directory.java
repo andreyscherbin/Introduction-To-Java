@@ -3,7 +3,9 @@ package by.htp.module5;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Directory {
+public class Directory implements Serializable {
+
+        private static final long serialVersionUID = 1L;
 
 	private String title;
 	private List<Directory> directoryList;
