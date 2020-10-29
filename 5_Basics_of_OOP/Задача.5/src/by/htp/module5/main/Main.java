@@ -1,9 +1,7 @@
-package com.Main;
+package by.htp.module5.main;
 
-import com.AbstractProduct.AbstractProduct;
-import com.Client.Client;
-import com.Gift.Gift;
-import com.GiftFactory.GiftFactory;
+import by.htp.module5.interfaces.AbstractProduct;
+import by.htp.module5.logic.GiftFactory;
 
 import java.util.Scanner;
 
@@ -24,12 +22,11 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Client client = new Client();
-        client.setAbstractFactory(new GiftFactory());
+        GiftFactory factory = new GiftFactory();
         int cost = 0;
         System.out.println("Введите цену подарка ");
         cost = scanner.nextInt();
-        AbstractProduct product = client.getGift(cost);
+        AbstractProduct product = factory.createProduct(cost);
         if (product == null) {
             System.out.println("Недостаточно средств");
         } else {

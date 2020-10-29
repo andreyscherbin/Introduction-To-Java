@@ -1,8 +1,8 @@
-package com.GiftFactory;
+package by.htp.module5.logic;
 
-import com.AbstractFactory.AbstractFactory;
-import com.AbstractProduct.AbstractProduct;
-import com.Gift.Gift;
+import by.htp.module5.interfaces.AbstractFactory;
+import by.htp.module5.interfaces.AbstractProduct;
+import by.htp.module5.entity.Gift;
 
 public class GiftFactory implements AbstractFactory {
 
