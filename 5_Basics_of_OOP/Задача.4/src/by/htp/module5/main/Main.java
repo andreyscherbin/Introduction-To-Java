@@ -1,12 +1,16 @@
-﻿package com.Main;
+package by.htp.module5.main;
 
-import com.Cave.Cave;
-import com.Dragon.Dragon;
-import com.Treasure.Treasure;
+
+import by.htp.module5.entity.Dragon;
+import by.htp.module5.entity.Treasure;
+import by.htp.module5.logic.TreasureFile;
+import by.htp.module5.logic.TreasureLogic;
+import by.htp.module5.view.TreasureView;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,29 +31,23 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        FileReader fileTreasures = new FileReader("treasures.txt");
-        Scanner scan = new Scanner(fileTreasures);
-        int i = 0;
-        Treasure[] treasures = new Treasure[100];
-
-        while (scan.hasNextLine()) {
-
-            String string = scan.nextLine();
-            String[] strings = string.split(" ");
-            int costTreasure = Integer.parseInt(strings[1]);
-            String nameTreasure = strings[0];
-            treasures[i] = new Treasure(nameTreasure, costTreasure);
-            i++;
-        }
+        TreasureLogic treasureLogic = new TreasureLogic();
+        TreasureView treasureView = new TreasureView();
+        TreasureFile treasureFile = new TreasureFile();
         Dragon dragon = new Dragon();
-        Cave cave = new Cave(treasures, dragon);
-        dragon.setCave(cave);
+        try {
+            dragon.setTreasures(treasureFile.readFile("treasures.txt"));
+        } catch (FileNotFoundException e) {
+            treasureView.print("file not found");
+        } catch (IOException e) {
+            treasureView.print("close file error");
+        }
 
         int inputNumber = 0;
         String inputString = "";
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         while (!"4".equals(inputString)) {
             System.out.println("1. Для просмотра сокровищ в пещере дракона введите 1");
@@ -66,25 +64,24 @@ public class Main {
 
             switch (inputNumber) {
                 case 1:
-                    dragon.viewTreasures();
+                    treasureView.print(dragon.getTreasures());
                     break;
 
                 case 2:
-                    dragon.searchmMostValuableTreasure();
+                    treasureView.print(treasureLogic.searchMostValuableTreasure(dragon.getTreasures()));
                     break;
 
                 case 3:
                     int cost = 0;
                     System.out.println("Введите сумму набора сокровищ");
                     cost = scan.nextInt();
-                    dragon.treasureSelection(cost);
+                    treasureView.print(treasureLogic.treasureSelection(dragon.getTreasures(), cost));
 
                 default:
-                    System.out.prinltn("Повторите ввод");
+                    System.out.println("Повторите ввод");
                     break;
             }
         }
         System.out.println("До свидания!");
-        fileTreasures.close();
     }
 }
